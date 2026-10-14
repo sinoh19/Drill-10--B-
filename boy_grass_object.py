@@ -42,6 +42,7 @@ class Zombie:
 class ball:
     def __init__(self):
         self.x, self.y = random.randint(100, 700), random.randint(100, 700)
+        self.image = load_image('ball41x41.png')
     def update(self):
         self.y += 5
     def draw(self):
