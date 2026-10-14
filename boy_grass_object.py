@@ -39,6 +39,15 @@ class Zombie:
         self.image.clip_draw(self.frame * frame_width, 0, frame_width, frame_height,
                 self.x, self.y, frame_width // 2, frame_height // 2)
 
+class ball:
+    def __init__(self):
+        self.x, self.y = random.randint(100, 700), random.randint(100, 700)
+    def update(self):
+        self.y += 5
+    def draw(self):
+        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        pass
+
 def handle_events():
     global running
     events = get_events()
@@ -79,8 +88,6 @@ def render_world():
 open_canvas()
 
 reset_world()
-
-delay(7)  # 잠시 대기
 
 
 while running:
