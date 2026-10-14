@@ -41,7 +41,7 @@ class Zombie:
 
 class Ball:
     def __init__(self):
-        self.x, self.y = random.randint(100, 700), random.randint(100, 700)
+        self.x, self.y = random.randint(100, 700), random.randint(100, 300)
         self.image = load_image('ball41x41.png')
     def update(self):
         self.y += 5
@@ -67,6 +67,7 @@ def reset_world():
     global world
     world = []
 
+
     # 땅 객체를 생성한다.
     grass = Grass()
     world.append(grass)
@@ -75,8 +76,8 @@ def reset_world():
     zombie = Zombie()
     world.append(zombie)
 
-    ball = Ball()
-    world.append(ball)
+    ball_team = [Ball() for i in range(20)]
+    world += ball_team
 
 def update_world():
     for obj in world:
@@ -86,7 +87,7 @@ def update_world():
 def render_world():
     clear_canvas()
     for obj in world:
-        obj.draw()
+        obj.draw() 
     update_canvas()
 #------------------------
 open_canvas()
