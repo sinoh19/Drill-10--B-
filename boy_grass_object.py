@@ -41,10 +41,14 @@ class Zombie:
 
 class Ball:
     def __init__(self):
-        self.x, self.y = random.randint(100, 700), random.randint(100, 300)
+        self.x, self.y = random.randint(50, 750), 100
         self.image = load_image('ball41x41.png')
     def update(self):
-        self.y += 5
+        if self.y < 600:
+            self.y += random.randint(1, 7)
+        elif self.y >= 600:
+            self.y -= random.randint(1, 20)
+
     def draw(self):
         self.image.draw(self.x, self.y)
         pass
@@ -90,7 +94,7 @@ def render_world():
         obj.draw() 
     update_canvas()
 #------------------------
-open_canvas()
+open_canvas(800, 600)
 
 reset_world()
 
