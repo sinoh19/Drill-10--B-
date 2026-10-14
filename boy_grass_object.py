@@ -39,14 +39,14 @@ class Zombie:
         self.image.clip_draw(self.frame * frame_width, 0, frame_width, frame_height,
                 self.x, self.y, frame_width // 2, frame_height // 2)
 
-class ball:
+class Ball:
     def __init__(self):
         self.x, self.y = random.randint(100, 700), random.randint(100, 700)
         self.image = load_image('ball41x41.png')
     def update(self):
         self.y += 5
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        self.image.draw(self.x, self.y)
         pass
 
 def handle_events():
@@ -74,6 +74,9 @@ def reset_world():
     # 소년 객체를 생성한다.
     zombie = Zombie()
     world.append(zombie)
+
+    ball = Ball()
+    world.append(ball)
 
 def update_world():
     for obj in world:
